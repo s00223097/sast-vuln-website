@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile - Vulnerable Website</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .nav { margin-bottom: 20px; }
+        .nav a { margin-right: 10px; }
+        .profile-info { max-width: 400px; }
+        .profile-info p { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="/profile">Profile</a>
+        <a href="/edit-profile">Edit Profile</a>
+    </div>
+    <h1>Profile</h1>
+    <div class="profile-info" id="profileInfo">
+        Loading profile...
+    </div>
+
+    <script>
+        async function loadProfile() {
+            try {
+                const response = await fetch('/api/profile');
+                if (response.status === 401) {
+                    window.location.href = '/login';
+                    return;
+                }
+                const data = await response.json();
+                document.getElementById('profileInfo').innerHTML = `
+                    <p><strong>Username:</strong> ${data.username}</p>
+                    <p><strong>Email:</strong> ${data.email}</p>
+                    <p><strong>Full Name:</strong> ${data.full_name}</p>
+                `;
+            } catch (error) {
+                alert('Error loading profile');
+                window.location.href = '/login';
+            }
+        }
+
+        loadProfile();
+    </script>
+</body>
+</html> 

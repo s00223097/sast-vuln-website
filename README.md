@@ -16,11 +16,14 @@ npm start
 
 3. Visit http://localhost:3000 in your browser
 
+4. Install `DevDb` extension in VS Code if you want to view the contents of users.db (SQLLite database) alongside the code.
+
 ## Features
 
 - User registration
 - User login
 - Profile viewing
+- Profile Editing
 - SQLite database storage
 
 ## Security Vulnerabilities
@@ -35,7 +38,8 @@ This website contains several intentional security vulnerabilities for penetrati
 6. No CSRF protection
 7. No XSS protection
 8. No secure session configuration
+9. Many more! 
 
 ## Note
 
-This website is intentionally vulnerable and should only be used for educational purposes in a controlled environment. 
+This website is intentionally vulnerable and it's only used for a pentest.
